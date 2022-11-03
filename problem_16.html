@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Resume</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="Resume Page">
+        <meta name="keywords" content="Albara, Resume">
+        <meta name="author" content="Albara Abdulkarim">
+        <script>
+            function calculateCost(numCredits){
+                var total = 0;
+                var tuition = 0;
+
+                if(document.getElementById("in").checked){
+                    if(document.getElementById("undergrad").checked){
+                        tuition = 200;
+                    }
+                    if(document.getElementById("grad").checked){
+                        tuition = 300;
+                    }
+                }
+                if(document.getElementById("out").checked){
+                    if(document.getElementById("undergrad").checked){
+                        tuition = 400;
+                    }
+                    if(document.getElementById("grad").checked){
+                        tuition = 600;
+                    }
+                }
+                if(document.getElementById("dorm").checked){
+                    total = total + 1000
+                }
+                if(document.getElementById("dining").checked){
+                    total = total + 500
+                }
+                if(document.getElementById("parking").checked){
+                    total = total + 200
+                }
+                total += tuition * numCredits;
+
+                outcome.innerHTML = "Cost: $" + total.toFixed(2);
+            }
+        </script>
+         <!--
+            Internal CSS 
+        -->
+        <style>
+            label{
+                display: inline-block;
+                width: 100px;
+            }
+            .menu{
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                height: 20vh;
+                width: 20vw;
+                margin: auto;
+            }
+            body{
+                text-align: center;
+                align-items: center;
+
+            }
+            .menu-row{
+                text-align: left;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .status-row{
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                gap: 5px;
+            }
+            .check-row{
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                gap: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>UniCost Calculator</h2>
+        <div class="menu">
+            <div class="menu-row">
+                <label for="numCredits">Enter Credit Amount: </label>
+                <input type="text" id="numCredits" name="numCredits"><br><br>
+            </div>
+            <div class="status-row">
+                <p>Please select your status: </p>
+                <label for="in">In State</label>
+                <input type="radio" id="in" name="in"><br><br>
+                <label for="out">Out of State</label>
+                <input type="radio" id="out" name="in"><br><br>
+                <label for="undergrad">Undergraduate</label>
+                <input type="radio" id="undergrad" name="undergrad"><br><br>
+                <label for="grad">Graduate</label>
+                <input type="radio" id="grad" name="undergrad"><br><br>
+            </div>
+            <div class="check-row">
+                <p>Please check the following options: </p>
+                <label for="dorm">Dorm</label>
+                <input type="checkbox" id="dorm" name="dorm"><br><br>
+                <label for="dining">Dining</label>
+                <input type="checkbox" id="dining" name="dining"><br><br>  
+                <label for="parking">Parking</label>
+                <input type="checkbox" id="parking" name="parking"><br><br>                  
+            </div>
+            <button type="button" onclick="calculateCost(numCredits.value)">Calculate Cost</button>
+
+            <p id="outcome"></p>
+        </div>
+    </body>
+
+
+</html>

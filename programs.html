@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+//code here
+
+// Problem 1
+function middle(a,b,c){
+    if((a >= b && a <= c) || (a >= c && a <= b)){
+        return a;
+    }
+    else if((b >= a && b <= c) || (b >= c && b <= a)){
+        return b;
+    }
+    else{
+        return c;
+    }
+}
+// Problem 2
+function factors(n){
+    var answer = "";
+    for(var i = 1; i <= i; i++){
+        if(n % i == 0){
+            answer += i + ' ';
+        }
+    }
+    return answer
+}
+// Problem 3
+function tax(status,income){
+    if(status.toLowerCase() == "single"){
+        if(income < 30000){
+            return income * 0.2
+        }
+        else{
+            return income * 0.25
+        }
+    }
+    if(status.toLowerCase() == "married"){
+        if(income < 50000){
+            return income * 0.1
+        }
+        else{
+            return income * 0.15
+        }
+    }
+}
+// Problem 4
+function stdDev(numbers){
+    var average = 0;
+    var total = 0;
+    var dev = 0;
+    for(let i = 0; i < numbers.length; i ++){
+        total = total + numbers[i];
+    }
+    average = total / numbers.length;
+
+    if(numbers.length == 2){
+        dev = 0;
+    }
+    else{
+        for(let i = 0; i < numbers.length; i ++){
+            dev = dev + Math.sqrt((numbers[i] - average) * (numbers[i] - average)/numbers.length);
+        }
+    }
+    return dev;
+}
+// Problem 5
+function compoundInterest(p,r,n){
+    var amount = 0;
+    amount = p * Math.pow((1 + r/100),n);
+
+    return amount;
+}
+// Problem 6
+function charType(char){
+    var type = "";
+    if(char == char.toUpperCase()){
+        type = "Upper";
+    }
+    if(char == char.toLowerCase()){
+        type = "Lower";
+    }
+    if(char.isInteger()){
+        type = "Digit";
+    }
+    else{
+        type = "Other";
+    }
+    return type;
+}
+// Problem 7
+function createIdPassword(firstName, lastName){
+    var id = firstName[0] + lastName;
+    var password = firstName[0] + firstName[firstName.length - 1] + lastName.substring(0,3) + firstName.length + lastName.length;
+    var obj = {
+        id : id.toUpperCase(),
+        password : password.toUpperCase()
+    };
+    return obj;
+}
+// Problem 8
+// We compare the array to itself, so we have a nested for loop where the outer for loop takes the first value then compares it in the inner for loop with the rest
+// of the values. 
+function removeDuplicates(strings){
+    var temp = "";
+    for(let i = 0; i < strings.length; i++){
+        //temp = strings[i]
+        for(let j = 0; j < strings.length; j++){
+            if(strings[i] == strings[j + 1]){
+                strings[j + 1] = strings[j + 2];
+            }
+        }
+    } 
+    return strings;
+}
+// Problem 9
+function mySort(lastNames, gpa, zipCodes){
+    
+}
+
+var arr = ["tree", "cat", "box", "cat", "dog", "tree", "tree"];
+console.log(removeDuplicates(arr))
+console.log(createIdPassword("Albara","Abdulkarim"))
+</script>
+<p></p>
+</body>
+</html>
