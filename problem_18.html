@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Problem 18</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="Problem 18">
+        <meta name="keywords" content="Albara, Resume">
+        <meta name="author" content="Albara Abdulkarim">
+        <script>
+            function formatFname(){
+                formatFmsg.innerHTML = "First name must be between 2 and 10 characters";
+            }
+            function formatLname(){
+                formatLmsg.innerHTML = "Last name must be between 2 and 10 characters";
+            }
+            function formatPhone(){
+                formatPmsg.innerHTML = "Phone number must be in xxx-xxx-xxxx format";
+            }
+            function formatOff(){
+                formatFmsg.innerHTML = "";
+                formatLmsg.innerHTML = "";
+                formatPmsg.innerHTML = "";
+            }
+            function createIdPassword(firstName,lastName,phone){
+                outcome.innerHTML = "";
+
+                if(firstName.length > 10 || firstName.length < 2  || firstName == ""){
+                    document.getElementById("firstName").style.backgroundColor = "red";
+                    return false;
+                }
+                else{
+                    document.getElementById("firstName").style.backgroundColor = "";
+                }
+                if(lastName.length > 10 || lastName.length < 2 || lastName == ""){
+                    document.getElementById("lastName").style.backgroundColor = "red";
+                    return false;
+                }
+                else{
+                    document.getElementById("lastName").style.backgroundColor = "";
+                }
+                if(phone.length != 12 || phone == ""){
+                    document.getElementById("phone").style.backgroundColor = "red";
+                    return false;
+                }
+                else{
+                    document.getElementById("phone").style.backgroundColor = "";
+                }
+                var id = firstName[0] + lastName;
+                var password = firstName[0] + firstName[firstName.length - 1] + lastName.substring(0,3) + phone.substr(8);
+
+                outcome.innerHTML = "Your username is " + id.toUpperCase() + " and your password is " + password.toUpperCase();
+            }
+        </script>
+         <!--
+            Internal CSS 
+        -->
+        <style>
+            input{
+                display: inline-block;
+                width: 20vw;
+                height: 2vh;
+            }
+            .menu{
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                height: 20vh;
+                width: 50vw;
+                margin: auto;
+            }
+            body{
+                text-align: center;
+                align-items: center;
+                display: flex;
+            }
+            .menu-row{
+                text-align: left;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .error-box{
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="menu">
+            <h2>Password Generator</h2>
+            <div class="menu-row">
+                <input type="text" id="firstName" name="firstName" placeholder="First name" onmouseover="formatFname()" onmouseleave="formatOff()" oninput="createIdPassword(firstName.value,lastName.value,phone.value)"><br><br>
+                <div id="formatFmsg"></div>     
+            </div>
+            <div class="menu-row">
+                <input type="text" id="lastName" name="lastName" placeholder="Last name" onmouseover="formatLname()" onmouseleave="formatOff()" oninput="createIdPassword(firstName.value,lastName.value,phone.value)"><br><br>
+                <div id="formatLmsg"></div>     
+            </div>
+            <div class="menu-row">
+                <input type="text" id="phone" name="phone" placeholder="Phone" onmouseover="formatPhone()" onmouseleave="formatOff()" oninput="createIdPassword(firstName.value,lastName.value,phone.value)"><br><br>    
+                <div id="formatPmsg"></div>           
+            </div>
+
+            <p id="outcome"></p>
+        </div>
+    </body>
+
+
+</html>

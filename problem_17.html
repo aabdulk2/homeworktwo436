@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Problem 17</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="Problem 17">
+        <meta name="keywords" content="Albara, Resume">
+        <meta name="author" content="Albara Abdulkarim">
+        <script>
+            function createIdPassword(firstName, lastName,phone){
+                outcome.innerHTML = "";
+                if(firstName == "" || lastName == "" || phone == ""){
+                    error.innerHTML = "You cannot leave fields empty!";
+                    return false;
+                }
+                if(firstName.length > 10 || lastName.length > 10){
+                    error.innerHTML = "First and last names cannot exceed 10 characters!";
+                    return false;
+                }
+                if(firstName.length < 2 || lastName.length < 2){
+                    error.innerHTML = "First and last names cannot be below 2 characters!";
+                    return false;
+                }
+                if(phone.length != 12){
+                    error.innerHTML = "Phone number must be in xxx-xxx-xxxx format!";
+                    return false;
+                }
+                else{
+                    error.innerHTML = "";
+                }
+                var id = firstName[0] + lastName;
+                var password = firstName[0] + firstName[firstName.length - 1] + lastName.substring(0,3) + phone.substr(8);
+
+                outcome.innerHTML = "Your username is " + id.toUpperCase() + " and your password is " + password.toUpperCase();
+            }
+        </script>
+         <!--
+            Internal CSS 
+        -->
+        <style>
+            input{
+                display: inline-block;
+                width: 20vw;
+                height: 2vh;
+            }
+            .menu{
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                height: 20vh;
+                width: 20vw;
+                margin: auto;
+            }
+            body{
+                text-align: center;
+                align-items: center;
+                display: flex;
+            }
+            .menu-row{
+                text-align: left;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .error-box{
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="menu">
+            <h2>Password Generator</h2>
+            <div class="menu-row">
+                <input type="text" id="firstName" name="firstName" placeholder="First name"><br><br>
+            </div>
+            <div class="menu-row">
+                <input type="text" id="lastName" name="lastName" placeholder="Last name"><br><br>
+            </div>
+            <div class="menu-row">
+                <input type="text" id="phone" name="phone" placeholder="Phone"><br><br>                
+            </div>
+            <button type="button" onclick="createIdPassword(firstName.value,lastName.value,phone.value)">Generate Password</button>
+
+            <p id="outcome"></p>
+        </div>
+        <div class="error-box">
+            <p id="error"></p>
+        </div>
+    </body>
+
+
+</html>
