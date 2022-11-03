@@ -118,6 +118,40 @@ function removeDuplicates(strings){
 function mySort(lastNames, gpa, zipCodes){
     
 }
+// Problem 11
+function ApplyFunctionToArray(f,p){
+    for(let i = 0; i < p.length; i++){
+        p[i] = f(p[i]);
+    }
+}
+// Problem 12
+class Student {
+    Student(name,gpa){
+        this.name = name;
+        this.gpa = gpa;
+    }
+    getGpa(){
+        return gpa;
+    }
+    getName(){
+        return name;
+    }
+    setGpa(gpa){
+        this.gpa = gpa;
+    }
+    setName(name){
+        this.name = name;
+    }
+    isHonors(){
+        if(this.gpa > 3.0){
+            return true;
+        }
+    }
+    toString(){
+        return "Student name: " + this.name + " GPA: " + this.gpa;
+    }
+}
+
 
 var arr = ["tree", "cat", "box", "cat", "dog", "tree", "tree"];
 console.log(removeDuplicates(arr))
